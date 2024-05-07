@@ -162,7 +162,7 @@ userRoutes.get('/users/:id', async (req, res) => {
 });
 
 // Update user by ID
-userRoutes.put('/update/:id',upload.single("image"), async (req, res) => {
+userRoutes.put('/update/user/:id',upload.single("image"), async (req, res) => {
   try {
     const { id } = req.params;
     const { username, email, password } = req.body;

@@ -36,7 +36,7 @@ userRoutes.post('/login', async (req, res) => {
       if (!validPassword) {
         return res.status(401).json({ error: 'Invalid password' });
       }
-      const token = jwt.sign({ userId: user._id }, 'secret_key');
+      const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY);
       res.json({ token });
       res.cookie('token', token, { 
         httpOnly: true,

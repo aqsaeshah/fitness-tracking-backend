@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('./db/Monngo.js');
 const userRoutes = require('./routes/UserRoutes');
@@ -9,4 +10,4 @@ app.use(express.json());
 app.use(userRoutes);
 app.use(WorkoutRoute);
 app.use('/uploads', express.static(path.join(__dirname, './middleware/upload')));
-app.listen(3000);
+app.listen(process.env.PORT);

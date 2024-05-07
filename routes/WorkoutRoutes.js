@@ -67,6 +67,28 @@ WorkoutRouter.put('/workouts/:id', async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   });
-
+  WorkoutRouter.put('/workouts/:id', async (req, res) => {
+    const workoutId = req.params.id;
+  
+    try {
+      // Find the workout by ID and update it
+      const updatedWorkout = await Workout.findByIdAndUpdate(
+        workoutId,
+        req.body,
+        { new: true } // Return the updated workout
+      );
+  
+      // If workout is not found, return 404 status
+      if (!updatedWorkout) {
+        return res.status(404).json({ message: 'Workout not found' });
+      }
+  
+      // If workout is updated successfully, return the updated workout
+      res.json(updatedWorkout);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
 
 module.exports = WorkoutRouter

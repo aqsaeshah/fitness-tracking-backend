@@ -4,7 +4,7 @@ const Workout = require('../db/Workout');
 const auth_check = require('../middleware/fileUpoad');
 const getUser = require('../middleware/getAuthUserDetails');
 
-WorkoutRouter.post("/workoutregister",auth_check ,  async function (req, res) {
+WorkoutRouter.post("/workoutregister" ,  async function (req, res) {
 
     getUser(req).then((daat)=>{
       console.log(daat)
